@@ -12,24 +12,21 @@ public class PhieuThueSan96 {
     private float paymentAmount;
     private float deposit;
     private String status;
-
-    // Một constructor rỗng
-
     public PhieuThueSan96() {
-    // Constructor
-    public PhieuThueSan96(String id, KhachHang96 khachHang, List<SanThue96> listSanThue, float paymentAmount, float deposit, String status) {
-        this.id = id;
+        this.id = UUID.randomUUID().toString();
+        }
+    public PhieuThueSan96( KhachHang96 khachHang, List<SanThue96> listSanThue) {
+        this.id = UUID.randomUUID().toString();
         this.khachHang = khachHang;
         this.listSanThue = listSanThue;
         this.listSanThuePhatSinh = new ArrayList<>();
         this.listMatHang = new ArrayList<>();
         this.createTime = new Date(); // Lấy thời gian hiện tại
-        this.paymentAmount = paymentAmount;
-        this.deposit = deposit;
-        this.status = status;
+        this.paymentAmount = getPaymentAmount();
+        this.deposit = paymentAmount * 0.1f;    
+        this.status = "Chưa thanh toán";
     }
 
-    // Getter and Setter methods
     public String getId() {
         return id;
     }
@@ -79,9 +76,18 @@ public class PhieuThueSan96 {
     }
 
     public float getPaymentAmount() {
+        float paymentAmount = 0;
+        for (SanThue96 sanThue : listSanThue) {
+            paymentAmount += sanThue.getPrice();
+        }
+        for (SanThuePhatSinh96 sanThue : listSanThuePhatSinh) {
+            paymentAmount += sanThue.getPrice();
+        }
+        for (MatHangDaSuDung96 matHang : listMatHang) {
+            paymentAmount += matHang.getTotal();
+        }        
         return paymentAmount;
     }
-
     public void setPaymentAmount(float paymentAmount) {
         this.paymentAmount = paymentAmount;
     }

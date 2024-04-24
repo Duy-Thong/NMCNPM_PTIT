@@ -7,11 +7,11 @@ public class SanThuePhatSinh96 {
 
     // Một constructor rằng
     public SanThuePhatSinh96() {
-        // Empty constructor
+        this.id = UUID.randomUUID().toString();
     }
     // Constructor
-    public SanThuePhatSinh96(String id, SanMini96 sanMini, ThoiGian96 thoiGianThue, String reason) {
-        this.id = id;
+    public SanThuePhatSinh96( SanMini96 sanMini, ThoiGian96 thoiGianThue, String reason) {
+        this.id = UUID.randomUUID().toString();
         this.sanMini = sanMini;
         this.thoiGianThue = thoiGianThue;
         // Tính giá tiền dựa trên giá của sân mini và số giờ thuê

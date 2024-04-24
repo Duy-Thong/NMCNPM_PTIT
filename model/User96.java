@@ -5,10 +5,12 @@ public class User96 {
     private String address;
     private String position;
 
-    public User96() {}
+    public User96() {
+        this.id = UUID.randomUUID().toString();
+    }
     // Constructor
-    public User96(String id, String name, String email, String address, String position) {
-        this.id = id;
+    public User96(String name, String email, String address, String position) {
+        this.id = UUID.randomUUID().toString();
         this.name = name;
         this.email = email;
         this.address = address;

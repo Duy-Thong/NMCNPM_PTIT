@@ -3,7 +3,7 @@ import java.util.Date;
 import java.util.List;
 
 public class KhachHang96 {
-    private String ID;
+    private String id;
     private String name;
     private String phoneNumber;
     private String email;
@@ -13,11 +13,13 @@ public class KhachHang96 {
     private List<HoaDon96> listHoaDon;
     
     // Empty constructor
-    public KhachHang96() {}
+    public KhachHang96() {
+        this.id = UUID.randomUUID().toString();
+    }
 
     // Constructor
-    public KhachHang96(String ID, String name, String phoneNumber, String email, String address, Date birthday) {
-        this.ID = ID;
+    public KhachHang96( String name, String phoneNumber, String email, String address, Date birthday) {
+        this.id = UUID.randomUUID().toString();
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;

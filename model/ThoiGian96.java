@@ -4,11 +4,11 @@ public class ThoiGian96 {
     private int endTime;
 
     public ThoiGian96() {
-        
+        this.id = UUID.randomUUID().toString();
     }
     // Constructor
-    public ThoiGian96(String id, int startTime, int endTime) {
-        this.id = id;
+    public ThoiGian96( int startTime, int endTime) {
+        this.id = UUID.randomUUID().toString();
         this.startTime = startTime;
         this.endTime = endTime;
     }

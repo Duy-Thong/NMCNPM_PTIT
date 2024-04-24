@@ -66,6 +66,7 @@ public class PaymentDAO96 {
     String query = "INSERT INTO tblHoaDonThueSan96 (id, userId, phieuThueSanId, createTime, paymentAmount, status, note) VALUES (?, ?, ?, ?, ?, ?, ?)";
     try {
         PreparedStatement statement = dbConnect.prepareStatement(query);
+        statement.setString(1, ); // ID của hóa đơn
         statement.setString(1, phieuThueSan96.getId()); // ID của hóa đơn
         statement.setString(2, current_user_id); // ID của người dùng
         statement.setString(3, phieuThueSan96.getId()); // ID của phiếu thuê sân

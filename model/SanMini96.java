@@ -7,12 +7,11 @@ public class SanMini96 {
     
     // Constructor rỗng
     public SanMini96() {
-        // Một constructor rỗng
+       this.id = UUID.randomUUID().toString();
     }
-
     // Constructor
     public SanMini96(String id, String name, float price, String type, String description) {
-        this.id = id;
+        this.id = UUID.randomUUID().toString();
         this.name = name;
         this.price = price;
         this.type = type;

@@ -1,19 +1,18 @@
 public class SanThue96 {
     private String id;
     private SanMini96 sanMini;
-    private ThoiGian96 thoiGianThue;
+    private list<ThoiGian96> thoiGianThue;
     private float price;
 
     public SanThue96() {
-        // Một constructor rằng
+        this.id = UUID.randomUUID().toString();
     }
     // Constructor
-    public SanThue96(String id, SanMini96 sanMini, ThoiGian96 thoiGianThue) {
-        this.id = id;
+    public SanThue96(SanMini96 sanMini, list<ThoiGian96> thoiGianThue) {
+        this.id = UUID.randomUUID().toString();
         this.sanMini = sanMini;
-        this.thoiGianThue = thoiGianThue;
-        // Tính giá tiền dựa trên giá của sân mini và số giờ thuê
-        this.price = sanMini.getPrice() * (thoiGianThue.getEndTime() - thoiGianThue.getStartTime());
+        this.thoiGianThue = thoiGianThue
+        this.price = getPrice();
     }
 
     public String getId() {
@@ -39,11 +38,13 @@ public class SanThue96 {
     public void setThoiGianThue(ThoiGian96 thoiGianThue) {
         this.thoiGianThue = thoiGianThue;
     }
-
     public float getPrice() {
+        float price = 0;
+        for (ThoiGian96 thoiGian : thoiGianThue) {
+            price += sanMini.getPrice() * (thoiGian.getEndTime() - thoiGian.getStartTime());
+        }
         return price;
     }
-
     public void setPrice(float price) {
         this.price = price;
     }

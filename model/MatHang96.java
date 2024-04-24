@@ -6,18 +6,17 @@ public class MatHang96 {
     private String description;
 
     public MatHang96() {
-        // Một constructor rỗng
+        this.id = UUID.randomUUID().toString();
     }
     // Constructor
     public MatHang96(String id, String name, int cost, int price, String description) {
-        this.id = id;
+        this.id = UUID.randomUUID().toString();
         this.name = name;
         this.cost = cost;
         this.price = price;
         this.description = description;
     }
 
-    // Getter and Setter methods
     public String getId() {
         return id;
     }

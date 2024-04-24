@@ -11,20 +11,19 @@ public class HoaDonThueSan96 {
 
     // Empty constructor
     public HoaDonThueSan96() {
-        
+        this.id = UUID.randomUUID().toString();
+    
     }
-    // Constructor
-    public HoaDonThueSan96(String id, User96 user, PhieuThueSan96 phieuThueSan, String status, String note) {
-        this.id = id;
+    public HoaDonThueSan96( User96 user, PhieuThueSan96 phieuThueSan, String status, String note) {
+        this.id = UUID.randomUUID().toString();
         this.user = user;
         this.phieuThueSan = phieuThueSan;
         this.createTime = new Date();
         this.paymentAmount = phieuThueSan.getPaymentAmount() - phieuThueSan.getDeposit();
-        this.status = status;
+        this.status = "Đã thanh toán";
         this.note = note;
     }
 
-    // Getter and Setter methods
     public String getId() {
         return id;
     }
