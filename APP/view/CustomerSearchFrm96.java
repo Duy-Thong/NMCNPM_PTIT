@@ -1,4 +1,7 @@
-// CustomerSearchFrm96.java
+package view;// view.CustomerSearchFrm96.java
+import DAO.PaymentDAO96;
+import model1.*;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;

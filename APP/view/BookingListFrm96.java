@@ -1,3 +1,7 @@
+package view;
+
+import DAO.PaymentDAO96;
+import model1.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;

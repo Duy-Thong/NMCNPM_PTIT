@@ -1,5 +1,9 @@
+package view;
+
+import DAO.PaymentDAO96;
+import model1.*;
+
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -107,7 +111,7 @@ public class InvoiceFrm96 extends JFrame {
         // Load invoice details from the provided PhieuThueSan96 object
         txtMaPhieuThue.setText(phieuThueSan96.getId());
         txtThongTinKhachHang.setText(phieuThueSan96.getKhachHang().getName());
-
+        //...........................
         // Load invoice details from the provided PhieuThueSan96 object
         txtTienCoc.setText(String.valueOf(phieuThueSan96.getDeposit()));
         txtTong.setText(String.valueOf(phieuThueSan96.getPaymentAmount()));
@@ -119,13 +123,8 @@ public class InvoiceFrm96 extends JFrame {
     }
 
     private void thanhToanNgay(PhieuThueSan96 phieuThueSan96) {
-        try {
-            // Process instant payment
-            paymentDAO.createHoaDonFromPhieuThueSan(phieuThueSan96);
-            JOptionPane.showMessageDialog(this, "Thanh toán thành công!");
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Lỗi khi thanh toán. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
-        }
+        // Process instant payment
+        paymentDAO.createHoaDonFromPhieuThueSan(phieuThueSan96);
+        JOptionPane.showMessageDialog(this, "Thanh toán thành công!");
     }
 }

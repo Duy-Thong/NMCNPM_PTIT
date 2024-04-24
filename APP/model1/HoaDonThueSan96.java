@@ -1,3 +1,5 @@
+package model1;
+
 import java.util.Date;
 import java.util.UUID;
 public class HoaDonThueSan96 {
@@ -14,7 +16,7 @@ public class HoaDonThueSan96 {
         this.id = UUID.randomUUID().toString();
     
     }
-    public HoaDonThueSan96( User96 user, PhieuThueSan96 phieuThueSan, String status, String note) {
+    public HoaDonThueSan96(User96 user, PhieuThueSan96 phieuThueSan, String status, String note) {
         this.id = UUID.randomUUID().toString();
         this.user = user;
         this.phieuThueSan = phieuThueSan;

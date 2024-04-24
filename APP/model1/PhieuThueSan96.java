@@ -1,3 +1,5 @@
+package model1;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,7 +18,7 @@ public class PhieuThueSan96 {
     public PhieuThueSan96() {
         this.id = UUID.randomUUID().toString();
         }
-    public PhieuThueSan96( KhachHang96 khachHang, List<SanThue96> listSanThue) {
+    public PhieuThueSan96(KhachHang96 khachHang, List<SanThue96> listSanThue) {
         this.id = UUID.randomUUID().toString();
         this.khachHang = khachHang;
         this.listSanThue = listSanThue;

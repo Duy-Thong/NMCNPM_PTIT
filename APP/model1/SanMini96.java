@@ -1,24 +1,28 @@
+package model1;
+
 import java.util.UUID;
 
-public class MatHang96 {
+public class SanMini96 {
     private String id;
     private String name;
-    private int cost;
-    private int price;
+    private float price;
+    private String type;
     private String description;
-
-    public MatHang96() {
-        this.id = UUID.randomUUID().toString();
+    
+    // Constructor rỗng
+    public SanMini96() {
+       this.id = UUID.randomUUID().toString();
     }
     // Constructor
-    public MatHang96(String id, String name, int cost, int price, String description) {
+    public SanMini96(String id, String name, float price, String type, String description) {
         this.id = UUID.randomUUID().toString();
         this.name = name;
-        this.cost = cost;
         this.price = price;
+        this.type = type;
         this.description = description;
     }
 
+    // Getter and Setter methods
     public String getId() {
         return id;
     }
@@ -35,20 +39,20 @@ public class MatHang96 {
         this.name = name;
     }
 
-    public int getCost() {
-        return cost;
-    }
-
-    public void setCost(int cost) {
-        this.cost = cost;
-    }
-
-    public int getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(float price) {
         this.price = price;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getDescription() {

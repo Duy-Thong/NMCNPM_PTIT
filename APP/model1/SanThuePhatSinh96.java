@@ -1,23 +1,30 @@
+package model1;
+
 import java.util.List;
 import java.util.UUID;
 
-public class SanThue96 {
+public class SanThuePhatSinh96 {
     private String id;
     private SanMini96 sanMini;
     private List<ThoiGian96> thoiGianThue;
     private float price;
+    private String reason;
 
-    public SanThue96() {
+    // Một constructor rằng
+    public SanThuePhatSinh96() {
         this.id = UUID.randomUUID().toString();
     }
     // Constructor
-    public SanThue96(SanMini96 sanMini, List<ThoiGian96> thoiGianThue) {
+    public SanThuePhatSinh96( SanMini96 sanMini, List<ThoiGian96> thoiGianThue, String reason) {
         this.id = UUID.randomUUID().toString();
         this.sanMini = sanMini;
         this.thoiGianThue = thoiGianThue;
+        // Tính giá tiền dựa trên giá của sân mini và số giờ thuê
         this.price = getPrice();
+        this.reason = reason;
     }
 
+    // Getter and Setter methods
     public String getId() {
         return id;
     }
@@ -34,13 +41,14 @@ public class SanThue96 {
         this.sanMini = sanMini;
     }
 
-    public ThoiGian96 getThoiGianThue() {
-        return (ThoiGian96) thoiGianThue;
+    public List<ThoiGian96> getThoiGianThue() {
+        return thoiGianThue;
     }
 
-    public void setThoiGianThue(ThoiGian96 thoiGianThue) {
-        this.thoiGianThue = (List<ThoiGian96>) thoiGianThue;
+    public void setThoiGianThue(List<ThoiGian96> thoiGianThue) {
+        this.thoiGianThue = thoiGianThue;
     }
+
     public float getPrice() {
         float price = 0;
         for (ThoiGian96 thoiGian : thoiGianThue) {
@@ -48,7 +56,16 @@ public class SanThue96 {
         }
         return price;
     }
+
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 }

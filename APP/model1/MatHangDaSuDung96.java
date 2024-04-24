@@ -1,3 +1,5 @@
+package model1;
+
 import java.util.UUID;
 
 public class MatHangDaSuDung96 {

@@ -1,8 +1,9 @@
+package DAO;
+
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
+import model1.*;
 public class PaymentDAO96 {
     // Database connection
     private Connection dbConnect;
@@ -19,7 +20,7 @@ public class PaymentDAO96 {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             // Set up the connection properties
-            String dbURL = "jdbc:mysql://localhost:3306/NMCNPM";
+            String dbURL = "jdbc:mysql://localhost:3306/nmcnpm";
             String username = "root";
             String password = "";
 

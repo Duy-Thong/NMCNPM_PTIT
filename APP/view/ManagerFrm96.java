@@ -1,8 +1,9 @@
-// ManagerFrm96.java
+package view;// view.ManagerFrm96.java
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import view.CustomerSearchFrm96;
+import DAO.PaymentDAO96;
 public class ManagerFrm96 extends JFrame {
     private JButton btnCustomerSearchMenu;
 
