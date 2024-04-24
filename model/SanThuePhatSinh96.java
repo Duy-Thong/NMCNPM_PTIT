@@ -1,3 +1,5 @@
+import java.util.UUID;
+
 public class SanThuePhatSinh96 {
     private String id;
     private SanMini96 sanMini;

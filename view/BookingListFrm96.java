@@ -52,18 +52,26 @@ public class BookingListFrm96 extends JFrame {
     private void displayBookings(List<PhieuThueSan96> bookings) {
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("ID");
-        model.addColumn("Start Time");
-        model.addColumn("End Time");
+        model.addColumn("Create Time");
+        model.addColumn("Deposit");
         model.addColumn("Price");
 
         for (PhieuThueSan96 booking : bookings) {
-            model.addRow(new Object[]{booking.getId(), booking.getStartTime(), booking.getEndTime(), booking.getPrice()});
+            model.addRow(new Object[]{booking.getId(), booking.getCreateTime(), booking.getDeposit(), booking.getPaymentAmount() });
+            tblPhieuThueSan96.setModel(model);
         }
-
-        tblPhieuThueSan96.setModel(model);
     }
 
     private void processPayment() {
-        // Add your code here to process payment for the selected booking
+        int selectedRow = tblPhieuThueSan96.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Please select a booking to process payment");
+            return;
+        }
+
+        String bookingId = (String) tblPhieuThueSan96.getValueAt(selectedRow, 0);
+        PhieuThueSan96 booking = paymentDAO.getBookingById(bookingId);
+        paymentDAO.createHoaDonFromPhieuThueSan(booking);
+        JOptionPane.showMessageDialog(this, "Payment processed successfully!");
     }
 }

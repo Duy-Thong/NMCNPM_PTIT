@@ -1,5 +1,5 @@
 import java.util.Date;
-
+import java.util.UUID;
 public class HoaDonThueSan96 {
     private String id;
     private User96 user;

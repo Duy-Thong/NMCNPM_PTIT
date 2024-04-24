@@ -106,7 +106,7 @@ public class InvoiceFrm96 extends JFrame {
     private void loadInvoiceDetails(PhieuThueSan96 phieuThueSan96) {
         // Load invoice details from the provided PhieuThueSan96 object
         txtMaPhieuThue.setText(phieuThueSan96.getId());
-        txtThongTinKhachHang.setText(phieuThueSan96.getKhachHang().getHoTen());
+        txtThongTinKhachHang.setText(phieuThueSan96.getKhachHang().getName());
 
         // Load invoice details from the provided PhieuThueSan96 object
         txtTienCoc.setText(String.valueOf(phieuThueSan96.getDeposit()));

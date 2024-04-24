@@ -1,17 +1,20 @@
+import java.util.List;
+import java.util.UUID;
+
 public class SanThue96 {
     private String id;
     private SanMini96 sanMini;
-    private list<ThoiGian96> thoiGianThue;
+    private List<ThoiGian96> thoiGianThue;
     private float price;
 
     public SanThue96() {
         this.id = UUID.randomUUID().toString();
     }
     // Constructor
-    public SanThue96(SanMini96 sanMini, list<ThoiGian96> thoiGianThue) {
+    public SanThue96(SanMini96 sanMini, List<ThoiGian96> thoiGianThue) {
         this.id = UUID.randomUUID().toString();
         this.sanMini = sanMini;
-        this.thoiGianThue = thoiGianThue
+        this.thoiGianThue = thoiGianThue;
         this.price = getPrice();
     }
 
@@ -32,11 +35,11 @@ public class SanThue96 {
     }
 
     public ThoiGian96 getThoiGianThue() {
-        return thoiGianThue;
+        return (ThoiGian96) thoiGianThue;
     }
 
     public void setThoiGianThue(ThoiGian96 thoiGianThue) {
-        this.thoiGianThue = thoiGianThue;
+        this.thoiGianThue = (List<ThoiGian96>) thoiGianThue;
     }
     public float getPrice() {
         float price = 0;

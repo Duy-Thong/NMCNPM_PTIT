@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+import java.util.UUID;
 public class KhachHang96 {
     private String id;
     private String name;
@@ -10,7 +10,7 @@ public class KhachHang96 {
     private String address;
     private Date birthday;
     private List<PhieuThueSan96> listPhieuThueSan;
-    private List<HoaDon96> listHoaDon;
+    private List<HoaDonThueSan96> listHoaDon;
     
     // Empty constructor
     public KhachHang96() {
@@ -30,12 +30,12 @@ public class KhachHang96 {
     }
 
     // Getter and Setter methods
-    public String getID() {
-        return ID;
+    public String getId() {
+        return id;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setId(String ID) {
+        this.id = ID;
     }
 
     public String getName() {
@@ -86,11 +86,11 @@ public class KhachHang96 {
         this.listPhieuThueSan = listPhieuThueSan;
     }
 
-    public List<HoaDon96> getListHoaDon() {
+    public List<HoaDonThueSan96> getListHoaDon() {
         return listHoaDon;
     }
 
-    public void setListHoaDon(List<HoaDon96> listHoaDon) {
+    public void setListHoaDon(List<HoaDonThueSan96> listHoaDon) {
         this.listHoaDon = listHoaDon;
     }
 }

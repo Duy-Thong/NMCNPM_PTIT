@@ -1,3 +1,5 @@
+import java.util.UUID;
+
 public class MatHangDaSuDung96 {
     private String id;
     private MatHang96 matHang;

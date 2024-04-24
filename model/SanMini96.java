@@ -1,3 +1,5 @@
+import java.util.UUID;
+
 public class SanMini96 {
     private String id;
     private String name;
