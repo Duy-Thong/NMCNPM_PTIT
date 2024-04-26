@@ -1,22 +1,22 @@
 package org.example.model;
 
+import java.sql.Time;
 import java.util.UUID;
 
 public class ThoiGian96 {
     private String id;
-    private int startTime;
-    private int endTime;
+    private Time startTime;
+    private Time endTime;
 
     public ThoiGian96() {
         this.id = UUID.randomUUID().toString();
     }
     // Constructor
-    public ThoiGian96( int startTime, int endTime) {
+    public ThoiGian96( Time startTime, Time endTime) {
         this.id = UUID.randomUUID().toString();
         this.startTime = startTime;
         this.endTime = endTime;
     }
-
     // Getter and Setter methods
     public String getId() {
         return id;
@@ -26,19 +26,19 @@ public class ThoiGian96 {
         this.id = id;
     }
 
-    public int getStartTime() {
+    public Time getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(int startTime) {
+    public void setStartTime(Time startTime) {
         this.startTime = startTime;
     }
 
-    public int getEndTime() {
+    public Time getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(int endTime) {
+    public void setEndTime(Time endTime) {
         this.endTime = endTime;
     }
 }

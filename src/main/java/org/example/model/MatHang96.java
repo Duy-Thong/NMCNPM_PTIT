@@ -13,7 +13,7 @@ public class MatHang96 {
         this.id = UUID.randomUUID().toString();
     }
     // Constructor
-    public MatHang96(String id, String name, int cost, int price, String description) {
+    public MatHang96(String name, int cost, int price, String description) {
         this.id = UUID.randomUUID().toString();
         this.name = name;
         this.cost = cost;

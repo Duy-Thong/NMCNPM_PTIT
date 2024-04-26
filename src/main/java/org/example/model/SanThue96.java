@@ -46,7 +46,7 @@ public class SanThue96 {
     public float getPrice() {
         float price = 0;
         for (ThoiGian96 thoiGian : thoiGianThue) {
-            price += sanMini.getPrice() * (thoiGian.getEndTime() - thoiGian.getStartTime());
+            price += sanMini.getPrice() * (thoiGian.getEndTime().getTime() - thoiGian.getStartTime().getTime()) / 3600000;
         }
         return price;
     }
