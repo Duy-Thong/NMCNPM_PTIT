@@ -41,7 +41,14 @@ public class BookingListFrm96 extends JFrame {
         btnThanhToan.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                processPayment();
+                int selectedRow = tblPhieuThueSan96.getSelectedRow();
+                if (selectedRow == -1) {
+
+                    return;
+                }
+                String bookingId = (String) tblPhieuThueSan96.getValueAt(selectedRow, 0);
+                PhieuThueSan96 booking = paymentDAO.getBookingById(bookingId);
+                processPayment( booking);
             }
         });
 
@@ -70,14 +77,7 @@ public class BookingListFrm96 extends JFrame {
         tblPhieuThueSan96.setModel(model);
     }
 
-    private void processPayment() {
-        int selectedRow = tblPhieuThueSan96.getSelectedRow();
-        if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(this, "Please select a booking to process payment");
-            return;
-        }
-        String bookingId = (String) tblPhieuThueSan96.getValueAt(selectedRow, 0);
-        PhieuThueSan96 booking = paymentDAO.getBookingById(bookingId);
+    private void processPayment( PhieuThueSan96 booking) {
         InvoiceFrm96 invoiceFrm96 = new InvoiceFrm96(booking);
         invoiceFrm96.setVisible(true);
         setVisible(false);
