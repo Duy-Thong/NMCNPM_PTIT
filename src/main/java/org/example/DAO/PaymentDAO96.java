@@ -85,6 +85,30 @@ public class PaymentDAO96 {
             while (result.next()) {
                 SanThuePhatSinh96 rental = new SanThuePhatSinh96();
                 rental.setId(result.getString("id"));
+                String query1 = "SELECT * FROM tblSanMini96 WHERE id = ?";
+                PreparedStatement statement1 = dbConnect.prepareStatement(query1);
+                statement1.setString(1,result.getString("sanMiniId"));
+                ResultSet result1 = statement1.executeQuery();
+                if (result1.next()) {
+                    SanMini96 sanMini = new SanMini96();
+                    sanMini.setId(result1.getString("id"));
+                    sanMini.setName(result1.getString("name"));
+                    sanMini.setPrice(result1.getFloat("price"));
+                    rental.setSanMini(sanMini);
+                }
+                String query2 = "SELECT * FROM tblThoiGian96 WHERE sanThueId = ?";
+                PreparedStatement statement2 = dbConnect.prepareStatement(query2);
+                statement2.setString(1,result.getString("id"));
+                ResultSet result2 = statement2.executeQuery();
+                List<ThoiGianPhatSinh96> times = new ArrayList<>();
+                while (result2.next()) {
+                    ThoiGianPhatSinh96 time = new ThoiGianPhatSinh96();
+                    time.setId(result2.getString("id"));
+                    time.setStartTime(result2.getTimestamp("startTime"));
+                    time.setEndTime(result2.getTimestamp("endTime"));
+                    times.add(time);
+                }
+                rental.setThoiGianThue(times);
                 rentals.add(rental);
             }
             return rentals;
@@ -178,16 +202,14 @@ public class PaymentDAO96 {
 
     public void createHoaDonFromPhieuThueSan(PhieuThueSan96 booking) {
         HoaDonThueSan96 invoice = new HoaDonThueSan96();
-        User96 currentUser = new User96();
-
-        String query = "INSERT INTO tblHoaDonThueSan96 (id, userId,phieuThueSanId, totalAmount) VALUES (?, ?,?, ?,?)";
+        String currentUserId = "1";
+        String query = "INSERT INTO tblHoaDonThueSan96 (id, userId,phieuThueSanId, totalAmount) VALUES (?, ?,?, ?)";
         try {
             PreparedStatement statement = dbConnect.prepareStatement(query);
             statement.setString(1, invoice.getId());
-            statement.setString(2, currentUser.getId());
+            statement.setString(2,currentUserId );
             statement.setString(3, booking.getId());
             statement.setDouble(4, booking.getPaymentAmount());
-            statement.setString(5, "Đã thanh toán");
             statement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();

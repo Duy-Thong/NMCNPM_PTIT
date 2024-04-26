@@ -4,6 +4,7 @@ import org.example.DAO.PaymentDAO96;
 import org.example.model.*;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -60,6 +61,7 @@ public class InvoiceFrm96 extends JFrame {
         JLabel lblMatHangDaSuDung96 = new JLabel("Danh Sách Mặt Hàng Đã Sử Dụng:");
         panel.add(lblMatHangDaSuDung96);
         tblMatHangDaSuDung96 = new JTable();
+
         JScrollPane scrollPaneMatHangDaSuDung96 = new JScrollPane(tblMatHangDaSuDung96);
         panel.add(scrollPaneMatHangDaSuDung96);
 
@@ -110,8 +112,34 @@ public class InvoiceFrm96 extends JFrame {
         // Load invoice details from the provided PhieuThueSan96 object
         txtMaPhieuThue.setText(phieuThueSan96.getId());
         txtThongTinKhachHang.setText(phieuThueSan96.getKhachHang().getName());
-        // Load list of sân thuê, sân thuê phát sinh, and mặt hàng đã sử dụng
-        //...........................
+        DefaultTableModel modelSanThue96 = new DefaultTableModel();
+        modelSanThue96.addColumn("ID");
+        modelSanThue96.addColumn("Tên Sân");
+        modelSanThue96.addColumn("Giá");
+        for (SanThue96 sanThue : phieuThueSan96.getListSanThue()) {
+            modelSanThue96.addRow(new Object[]{sanThue.getId(), sanThue.getSanMini().getName(), sanThue.getPrice()});
+        }
+        tblSanThue96.setModel(modelSanThue96);
+
+        DefaultTableModel modelSanThuePhatSinh96 = new DefaultTableModel();
+        modelSanThuePhatSinh96.addColumn("ID");
+        modelSanThuePhatSinh96.addColumn("Tên Sân");
+        modelSanThuePhatSinh96.addColumn("Giá");
+        modelSanThuePhatSinh96.addColumn("Lý Do");
+        for (SanThuePhatSinh96 sanThuePhatSinh : phieuThueSan96.getListSanThuePhatSinh()) {
+            modelSanThuePhatSinh96.addRow(new Object[]{sanThuePhatSinh.getId(), sanThuePhatSinh.getSanMini().getName(), sanThuePhatSinh.getPrice(), sanThuePhatSinh.getReason()});
+        }
+        tblSanThuePhatSinh96.setModel(modelSanThuePhatSinh96);
+
+        DefaultTableModel modelMatHangDaSuDung96 = new DefaultTableModel();
+        modelMatHangDaSuDung96.addColumn("ID");
+        modelMatHangDaSuDung96.addColumn("Tên Mặt Hàng");
+        modelMatHangDaSuDung96.addColumn("Số Lượng");
+        modelMatHangDaSuDung96.addColumn("Giá");
+        for (MatHangDaSuDung96 matHangDaSuDung : phieuThueSan96.getListMatHang()) {
+            modelMatHangDaSuDung96.addRow(new Object[]{matHangDaSuDung.getId(), matHangDaSuDung.getMatHang().getName(), matHangDaSuDung.getQuantity(), matHangDaSuDung.getTotal()});
+        }
+        tblMatHangDaSuDung96.setModel(modelMatHangDaSuDung96);
         txtTienCoc.setText(String.valueOf(phieuThueSan96.getDeposit()));
         txtTong.setText(String.valueOf(phieuThueSan96.getPaymentAmount()));
         txtTrangThai.setText(phieuThueSan96.getStatus());
@@ -127,5 +155,6 @@ public class InvoiceFrm96 extends JFrame {
         JOptionPane.showMessageDialog(this, "Thanh toán thành công!");
         ManagerFrm96 managerFrm96 = new ManagerFrm96();
         managerFrm96.setVisible(true);
+        setVisible(false);
     }
 }

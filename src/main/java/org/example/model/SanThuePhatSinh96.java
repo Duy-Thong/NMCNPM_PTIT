@@ -6,7 +6,7 @@ import java.util.UUID;
 public class SanThuePhatSinh96 {
     private String id;
     private SanMini96 sanMini;
-    private List<ThoiGian96> thoiGianThue;
+    private List<ThoiGianPhatSinh96> thoiGianThue;
     private float price;
     private String reason;
 
@@ -15,7 +15,7 @@ public class SanThuePhatSinh96 {
         this.id = UUID.randomUUID().toString();
     }
     // Constructor
-    public SanThuePhatSinh96( SanMini96 sanMini, List<ThoiGian96> thoiGianThue, String reason) {
+    public SanThuePhatSinh96( SanMini96 sanMini, List<ThoiGianPhatSinh96> thoiGianThue, String reason) {
         this.id = UUID.randomUUID().toString();
         this.sanMini = sanMini;
         this.thoiGianThue = thoiGianThue;
@@ -41,17 +41,17 @@ public class SanThuePhatSinh96 {
         this.sanMini = sanMini;
     }
 
-    public List<ThoiGian96> getThoiGianThue() {
+    public List<ThoiGianPhatSinh96> getThoiGianThue() {
         return thoiGianThue;
     }
 
-    public void setThoiGianThue(List<ThoiGian96> thoiGianThue) {
+    public void setThoiGianThue(List<ThoiGianPhatSinh96> thoiGianThue) {
         this.thoiGianThue = thoiGianThue;
     }
 
     public float getPrice() {
         float price = 0;
-        for (ThoiGian96 thoiGian : thoiGianThue) {
+        for (ThoiGianPhatSinh96 thoiGian : thoiGianThue) {
             price += sanMini.getPrice() * (thoiGian.getEndTime().getTime() - thoiGian.getStartTime().getTime()) / 3600000;
         }
         return price;

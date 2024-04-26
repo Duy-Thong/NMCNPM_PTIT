@@ -90,6 +90,7 @@ public class CustomerSearchFrm96 extends JFrame {
     private void openBookingListForm(String id) {
         BookingListFrm96 bookingListFrm96 = new BookingListFrm96(id);
         bookingListFrm96.setVisible(true);
+        setVisible(false);
     }
 
 }

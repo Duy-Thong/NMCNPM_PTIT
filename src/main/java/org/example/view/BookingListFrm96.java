@@ -80,6 +80,7 @@ public class BookingListFrm96 extends JFrame {
         PhieuThueSan96 booking = paymentDAO.getBookingById(bookingId);
         InvoiceFrm96 invoiceFrm96 = new InvoiceFrm96(booking);
         invoiceFrm96.setVisible(true);
+        setVisible(false);
 
         JOptionPane.showMessageDialog(this, "Payment processed successfully!");
     }
