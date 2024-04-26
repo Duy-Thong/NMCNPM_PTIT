@@ -52,10 +52,10 @@ public class PaymentDAO96 {
 
     public List<PhieuThueSan96> getBookingsByCustomerId(String customerId) throws SQLException {
         List<PhieuThueSan96> bookings = new ArrayList<>();
-        String query = "SELECT * FROM tblPhieuThueSan96 WHERE customerId = ?";
+        String query = "SELECT * FROM tblPhieuThueSan96 WHERE khachHangId = ?";
         try {
             PreparedStatement statement = dbConnect.prepareStatement(query);
-            statement.setString(1, customerId);
+            statement.setString(1,customerId);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
                 PhieuThueSan96 booking = new PhieuThueSan96();
@@ -65,6 +65,8 @@ public class PaymentDAO96 {
                 booking.setListSanThue(getRentalsByBookingId(booking.getId()));
                 booking.setListSanThuePhatSinh(getRentalInAdvanceByBookingId(booking.getId()));
                 booking.setCreateTime(result.getDate("createTime"));
+                booking.setPaymentAmount(result.getFloat("paymentAmount"));
+                booking.setDeposit(result.getFloat("deposit"));
                 bookings.add(booking);
             }
         } catch (SQLException ex) {
@@ -141,6 +143,30 @@ public class PaymentDAO96 {
             while (result.next()) {
                 SanThue96 rental = new SanThue96();
                 rental.setId(result.getString("id"));
+                String query1 = "SELECT * FROM tblSanMini96 WHERE id = ?";
+                PreparedStatement statement1 = dbConnect.prepareStatement(query1);
+                statement1.setString(1,result.getString("sanMiniId"));
+                ResultSet result1 = statement1.executeQuery();
+                if (result1.next()) {
+                    SanMini96 sanMini = new SanMini96();
+                    sanMini.setId(result1.getString("id"));
+                    sanMini.setName(result1.getString("name"));
+                    sanMini.setPrice(result1.getFloat("price"));
+                    rental.setSanMini(sanMini);
+                }
+                String query2 = "SELECT * FROM tblThoiGian96 WHERE sanThueId = ?";
+                PreparedStatement statement2 = dbConnect.prepareStatement(query2);
+                statement2.setString(1,result.getString("id"));
+                ResultSet result2 = statement2.executeQuery();
+                List<ThoiGian96> times = new ArrayList<>();
+                while (result2.next()) {
+                    ThoiGian96 time = new ThoiGian96();
+                    time.setId(result2.getString("id"));
+                    time.setStartTime(result2.getTimestamp("startTime"));
+                    time.setEndTime(result2.getTimestamp("endTime"));
+                    times.add(time);
+                }
+                rental.setThoiGianThue(times);
                 rentals.add(rental);
             }
         } catch (SQLException ex) {
@@ -177,10 +203,11 @@ public class PaymentDAO96 {
             if (result.next()) {
                 PhieuThueSan96 booking = new PhieuThueSan96();
                 booking.setId(result.getString("id"));
-                booking.setKhachHang(getCustomerById(result.getString("customerId")));
+                booking.setKhachHang(getCustomerById(result.getString("khachHangId")));
                 booking.setListMatHang(getUsedProductsByBookingId(booking.getId()));
                 booking.setListSanThue(getRentalsByBookingId(booking.getId()));
                 booking.setListSanThuePhatSinh(getRentalInAdvanceByBookingId(booking.getId()));
+                booking.setPaymentAmount(result.getFloat("paymentAmount"));
                 booking.setCreateTime(result.getDate("createTime"));
                 return booking;
             }

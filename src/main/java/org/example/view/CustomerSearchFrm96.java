@@ -51,10 +51,9 @@ public class CustomerSearchFrm96 extends JFrame {
         btnSelect.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int selectedRow = 1;
-                String id = "3";
+                int row = tblKhachHang96.getSelectedRow();
+                String id = tblKhachHang96.getValueAt(row, 0).toString();
                 openBookingListForm(id);
-
             }
         });
         btnSearch.addActionListener(new ActionListener() {
@@ -82,19 +81,8 @@ public class CustomerSearchFrm96 extends JFrame {
         model.addColumn("Name");
         model.addColumn("Email");
         model.addColumn("Address");
-        model.addColumn("Select"); // Add a column for the select button
-
         for (KhachHang96 customer : customers) {
-            JButton selectButton = new JButton("Select"); // Create a select button for each row
-            selectButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    openBookingListForm(customer.getId());
-                }
-            });
-
-            // Add customer data and select button to the row
-            model.addRow(new Object[]{customer.getId(), customer.getName(), customer.getEmail(), customer.getAddress(), selectButton});
+            model.addRow(new Object[]{customer.getId(), customer.getName(), customer.getEmail(), customer.getAddress()});
         }
         tblKhachHang96.setModel(model);
     }

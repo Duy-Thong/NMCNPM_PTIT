@@ -80,13 +80,13 @@ public class PhieuThueSan96 {
 
     public float getPaymentAmount() {
         float paymentAmount = 0;
-        for (SanThue96 sanThue : listSanThue) {
+        for (SanThue96 sanThue : this.listSanThue) {
             paymentAmount += sanThue.getPrice();
         }
-        for (SanThuePhatSinh96 sanThue : listSanThuePhatSinh) {
+        for (SanThuePhatSinh96 sanThue : this.listSanThuePhatSinh) {
             paymentAmount += sanThue.getPrice();
         }
-        for (MatHangDaSuDung96 matHang : listMatHang) {
+        for (MatHangDaSuDung96 matHang : this.listMatHang) {
             paymentAmount += matHang.getTotal();
         }        
         return paymentAmount;

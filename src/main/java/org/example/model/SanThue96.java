@@ -40,8 +40,8 @@ public class SanThue96 {
         return (ThoiGian96) thoiGianThue;
     }
 
-    public void setThoiGianThue(ThoiGian96 thoiGianThue) {
-        this.thoiGianThue = (List<ThoiGian96>) thoiGianThue;
+    public void setThoiGianThue(List<ThoiGian96> thoiGianThue) {
+        this.thoiGianThue = thoiGianThue;
     }
     public float getPrice() {
         float price = 0;

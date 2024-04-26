@@ -1,6 +1,7 @@
 package org.example.model;
 
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.UUID;
 
 public class ThoiGian96 {
@@ -40,5 +41,12 @@ public class ThoiGian96 {
 
     public void setEndTime(Time endTime) {
         this.endTime = endTime;
+    }
+
+    public void setStartTime(Timestamp startTime) {
+        this.startTime = new Time(startTime.getTime());
+    }
+    public void setEndTime(Timestamp endTime) {
+        this.endTime = new Time(endTime.getTime());
     }
 }

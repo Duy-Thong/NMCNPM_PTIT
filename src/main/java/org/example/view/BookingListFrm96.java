@@ -27,6 +27,9 @@ public class BookingListFrm96 extends JFrame {
 
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
+        JTextArea txtCustomerInfo = new JTextArea();
+        txtCustomerInfo.setText("Customer ID: " + customerId);
+        panel.add(txtCustomerInfo, BorderLayout.NORTH);
         tblPhieuThueSan96 = new JTable();
         JScrollPane scrollPane = new JScrollPane(tblPhieuThueSan96);
         panel.add(scrollPane, BorderLayout.CENTER);
@@ -47,6 +50,7 @@ public class BookingListFrm96 extends JFrame {
 
     private void loadBookingList(String customerId) {
         try {
+
             List<PhieuThueSan96> bookings = paymentDAO.getBookingsByCustomerId(customerId);
             displayBookings(bookings);
         } catch (SQLException ex) {
@@ -62,8 +66,8 @@ public class BookingListFrm96 extends JFrame {
 
         for (PhieuThueSan96 booking : bookings) {
             model.addRow(new Object[]{booking.getId(), booking.getCreateTime(), booking.getDeposit(), booking.getPaymentAmount() });
-            tblPhieuThueSan96.setModel(model);
         }
+        tblPhieuThueSan96.setModel(model);
     }
 
     private void processPayment() {
