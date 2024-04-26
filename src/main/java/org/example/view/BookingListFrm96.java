@@ -53,7 +53,6 @@ public class BookingListFrm96 extends JFrame {
             ex.printStackTrace();
         }
     }
-
     private void displayBookings(List<PhieuThueSan96> bookings) {
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("ID");
@@ -68,13 +67,11 @@ public class BookingListFrm96 extends JFrame {
     }
 
     private void processPayment() {
-
         int selectedRow = tblPhieuThueSan96.getSelectedRow();
         if (selectedRow == -1) {
             JOptionPane.showMessageDialog(this, "Please select a booking to process payment");
             return;
         }
-
         String bookingId = (String) tblPhieuThueSan96.getValueAt(selectedRow, 0);
         PhieuThueSan96 booking = paymentDAO.getBookingById(bookingId);
         InvoiceFrm96 invoiceFrm96 = new InvoiceFrm96(booking);

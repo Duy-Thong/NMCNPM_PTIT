@@ -110,8 +110,8 @@ public class InvoiceFrm96 extends JFrame {
         // Load invoice details from the provided PhieuThueSan96 object
         txtMaPhieuThue.setText(phieuThueSan96.getId());
         txtThongTinKhachHang.setText(phieuThueSan96.getKhachHang().getName());
+        // Load list of sân thuê, sân thuê phát sinh, and mặt hàng đã sử dụng
         //...........................
-        // Load invoice details from the provided PhieuThueSan96 object
         txtTienCoc.setText(String.valueOf(phieuThueSan96.getDeposit()));
         txtTong.setText(String.valueOf(phieuThueSan96.getPaymentAmount()));
         txtTrangThai.setText(phieuThueSan96.getStatus());

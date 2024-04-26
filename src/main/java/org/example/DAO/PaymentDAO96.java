@@ -151,12 +151,17 @@ public class PaymentDAO96 {
 
 
     public void createHoaDonFromPhieuThueSan(PhieuThueSan96 booking) {
-        String query = "INSERT INTO tblHoaDonThueSan96 (id, phieuThueSanId, totalAmount) VALUES (?, ?, ?)";
+        HoaDonThueSan96 invoice = new HoaDonThueSan96();
+        User96 currentUser = new User96();
+
+        String query = "INSERT INTO tblHoaDonThueSan96 (id, userId,phieuThueSanId, totalAmount) VALUES (?, ?,?, ?,?)";
         try {
             PreparedStatement statement = dbConnect.prepareStatement(query);
-            statement.setString(1, booking.getId());
-            statement.setString(2, booking.getId());
-            statement.setDouble(3, booking.getPaymentAmount());
+            statement.setString(1, invoice.getId());
+            statement.setString(2, currentUser.getId());
+            statement.setString(3, booking.getId());
+            statement.setDouble(4, booking.getPaymentAmount());
+            statement.setString(5, "Đã thanh toán");
             statement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
