@@ -5,15 +5,15 @@ import java.util.UUID;
 public class MatHang96 {
     private String id;
     private String name;
-    private int cost;
-    private int price;
+    private float cost;
+    private float price;
     private String description;
 
     public MatHang96() {
         this.id = UUID.randomUUID().toString();
     }
     // Constructor
-    public MatHang96(String name, int cost, int price, String description) {
+    public MatHang96(String name, float cost, float price, String description) {
         this.id = UUID.randomUUID().toString();
         this.name = name;
         this.cost = cost;
@@ -37,7 +37,7 @@ public class MatHang96 {
         this.name = name;
     }
 
-    public int getCost() {
+    public float getCost() {
         return cost;
     }
 
@@ -45,7 +45,7 @@ public class MatHang96 {
         this.cost = cost;
     }
 
-    public int getPrice() {
+    public float getPrice() {
         return price;
     }
 
