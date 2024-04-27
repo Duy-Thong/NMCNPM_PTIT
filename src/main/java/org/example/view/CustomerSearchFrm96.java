@@ -52,6 +52,10 @@ public class CustomerSearchFrm96 extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int row = tblKhachHang96.getSelectedRow();
+                if (row == -1) {
+                    JOptionPane.showMessageDialog(CustomerSearchFrm96.this, "Please select a customer");
+                    return;
+                }
                 String id = tblKhachHang96.getValueAt(row, 0).toString();
                 openBookingListForm(id);
             }

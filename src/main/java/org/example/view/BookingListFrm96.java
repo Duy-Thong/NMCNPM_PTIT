@@ -43,7 +43,7 @@ public class BookingListFrm96 extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = tblPhieuThueSan96.getSelectedRow();
                 if (selectedRow == -1) {
-
+                    JOptionPane.showMessageDialog(BookingListFrm96.this, "Please select a booking");
                     return;
                 }
                 String bookingId = (String) tblPhieuThueSan96.getValueAt(selectedRow, 0);
