@@ -203,7 +203,7 @@ public class PaymentDAO96 {
     public void createHoaDonFromPhieuThueSan(PhieuThueSan96 booking) {
         HoaDonThueSan96 invoice = new HoaDonThueSan96();
         String currentUserId = "1";
-        String query = "INSERT INTO tblHoaDonThueSan96 (id, userId,phieuThueSanId, paymentAmount,,createTime,status) VALUES (?, ?,?,?, ?,?)";
+        String query = "INSERT INTO tblHoaDonThueSan96 (id, userId,phieuThueSanId, paymentAmount,createTime,status) VALUES (?, ?,?,?, ?,?)";
         try {
             PreparedStatement statement = dbConnect.prepareStatement(query);
             statement.setString(1, invoice.getId());
