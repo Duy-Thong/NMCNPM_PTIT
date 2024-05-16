@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 28, 2024 lúc 05:48 PM
+-- Thời gian đã tạo: Th5 16, 2024 lúc 06:05 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.0.28
 
@@ -46,7 +46,10 @@ INSERT INTO `tblhoadonthuesan96` (`id`, `userId`, `phieuThueSanId`, `createTime`
 ('2', '2', '2', '2024-04-26 11:30:00', 2000, 'completed', 'Thanh toán trước'),
 ('3', '1', '3', '2024-04-26 12:45:00', 1800, 'pending', 'Chưa thanh toán'),
 ('395374bc-ee22-474e-be7f-83a5c1e8e93f', '1', '2', NULL, 720, NULL, NULL),
-('4', '2', '1', '2024-04-26 14:00:00', 1200, 'completed', 'Thanh toán bằng thẻ');
+('4', '2', '1', '2024-04-26 14:00:00', 1200, 'completed', 'Thanh toán bằng thẻ'),
+('575a12eb-52c6-47b8-b90e-828abf716971', '1', '4', '2024-05-16 00:00:00', 394, 'Da thanh toan', NULL),
+('6ed7fc0f-3347-40bd-9626-29cf0de260d8', '1', '4', '2024-05-16 00:00:00', 394, 'Đã thanh toán', NULL),
+('742092fc-7e6e-43e0-b6a2-4e17f1be6cc2', '1', '4', '2024-05-13 00:00:00', 0, 'Đã thanh toán', NULL);
 
 -- --------------------------------------------------------
 
@@ -72,7 +75,8 @@ INSERT INTO `tblkhachhang96` (`id`, `name`, `phoneNumber`, `email`, `address`, `
 ('2', 'Jane Smith', '0987654321', 'jane@example.com', '456 Oak St, Town, Country', '1985-10-20'),
 ('3', 'Alice Johnson', '5551234567', 'alice@example.com', '789 Elm St, Village, Country', '1995-03-25'),
 ('4', 'Bob Brown', '7778889999', 'bob@example.com', '101 Pine St, Hamlet, Country', '1980-08-12'),
-('5', 'Eva Green', '3332221111', 'eva@example.com', '202 Cedar St, Suburb, Country', '1975-12-30');
+('5', 'Eva Green', '3332221111', 'eva@example.com', '202 Cedar St, Suburb, Country', '1975-12-30'),
+('72', 'Duy Thong', '0397403808', 'duythong.ptit@gmail.com', '182 Yen Binh, Phuc La', '2003-07-02');
 
 -- --------------------------------------------------------
 
@@ -83,8 +87,8 @@ INSERT INTO `tblkhachhang96` (`id`, `name`, `phoneNumber`, `email`, `address`, `
 CREATE TABLE `tblmathang96` (
   `id` varchar(36) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `cost` int(11) DEFAULT NULL,
-  `price` int(11) DEFAULT NULL,
+  `cost` float DEFAULT NULL,
+  `price` float DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -111,6 +115,14 @@ CREATE TABLE `tblmathangdasudung96` (
   `phieuThueSanId` varchar(36) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `tblmathangdasudung96`
+--
+
+INSERT INTO `tblmathangdasudung96` (`id`, `matHangId`, `quantity`, `total`, `phieuThueSanId`) VALUES
+('1', '1', 5, 75, '4'),
+('2', '2', 3, 60, '4');
+
 -- --------------------------------------------------------
 
 --
@@ -133,7 +145,9 @@ CREATE TABLE `tblphieuthuesan96` (
 INSERT INTO `tblphieuthuesan96` (`id`, `khachHangId`, `createTime`, `paymentAmount`, `deposit`, `status`) VALUES
 ('1', '2', '2024-04-26 14:07:11', 100, 50, 'pending'),
 ('2', '3', '2024-04-26 14:07:11', 150, 75, 'pending'),
-('3', '3', '2024-04-26 14:07:11', 200, 100, 'pending');
+('3', '3', '2024-04-26 14:07:11', 200, 100, 'pending'),
+('4', '72', '2024-05-16 04:01:13', 560, 56, 'Da thanh toan'),
+('5', '72', '2024-05-13 04:45:11', 1000, 100, 'Chua Thanh Toan');
 
 -- --------------------------------------------------------
 
@@ -178,7 +192,9 @@ CREATE TABLE `tblsanthue96` (
 INSERT INTO `tblsanthue96` (`id`, `sanMiniId`, `price`, `phieuThueSanId`) VALUES
 ('1', 'uuid1', 2500, '2'),
 ('2', 'uuid2', 2000, '2'),
-('3', 'uuid2', 1000, '1');
+('3', 'uuid2', 1000, '1'),
+('4', 'uuid1', 2350, '4'),
+('5', 'uuid2', 1500, '4');
 
 -- --------------------------------------------------------
 
@@ -215,7 +231,8 @@ CREATE TABLE `tblthoigian96` (
 INSERT INTO `tblthoigian96` (`id`, `startTime`, `endTime`, `sanThueId`) VALUES
 ('1', '2024-04-26 08:00:00', '2024-04-26 10:00:00', '2'),
 ('2', '2024-04-26 11:00:00', '2024-04-26 13:00:00', '2'),
-('3', '2024-04-26 14:00:00', '2024-04-26 16:00:00', '2');
+('3', '2024-04-26 14:00:00', '2024-04-26 16:00:00', '2'),
+('4', '2024-04-26 14:00:00', '2024-04-26 16:00:00', '4');
 
 -- --------------------------------------------------------
 
