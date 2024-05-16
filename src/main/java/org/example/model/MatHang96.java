@@ -49,7 +49,7 @@ public class MatHang96 {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 

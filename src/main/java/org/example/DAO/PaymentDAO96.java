@@ -139,22 +139,34 @@ public class PaymentDAO96 {
         return null;
     }
 
-    private List<MatHangDaSuDung96> getUsedProductsByBookingId(String id) {
-        List<MatHangDaSuDung96> products = new ArrayList<>();
+    public List<MatHangDaSuDung96> getUsedProductsByBookingId(String id) {
+        List<MatHangDaSuDung96> usedproducts = new ArrayList<>();
         String query = "SELECT * FROM tblMatHangDaSuDung96 WHERE phieuThueSanId = ?";
         try {
             PreparedStatement statement = dbConnect.prepareStatement(query);
             statement.setString(1, id);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
-                MatHangDaSuDung96 product = new MatHangDaSuDung96();
-                product.setId(result.getString("id"));
-                products.add(product);
+                MatHangDaSuDung96 usedproduct = new MatHangDaSuDung96();
+                usedproduct.setId(result.getString("id"));
+                String query1 = "SELECT * FROM tblMatHang96 WHERE id = ?";
+                PreparedStatement statement1 = dbConnect.prepareStatement(query1);
+                statement1.setString(1,result.getString("matHangId"));
+                ResultSet result1 = statement1.executeQuery();
+                if (result1.next()) {
+                    MatHang96 product = new MatHang96();
+                    product.setId(result1.getString("id"));
+                    product.setName(result1.getString("name"));
+                    product.setPrice(result1.getFloat("price"));
+                    usedproduct.setMatHang(product);
+                }
+                usedproduct.setQuantity(result.getInt("quantity"));
+                usedproducts.add(usedproduct);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return products;
+        return usedproducts;
     }
 
     private List<SanThue96> getRentalsByBookingId(String id) {
@@ -211,8 +223,13 @@ public class PaymentDAO96 {
             statement.setString(3, booking.getId());
             statement.setDouble(4, booking.getPaymentAmount()-booking.getDeposit());
             statement.setDate(5, new Date(System.currentTimeMillis()));
-            statement.setString(6, "Đã thanh toán");
+            statement.setString(6, "Da thanh toan");
             statement.executeUpdate();
+            String query1 = "UPDATE tblPhieuThueSan96 SET status = ? WHERE id = ?";
+            PreparedStatement statement1 = dbConnect.prepareStatement(query1);
+            statement1.setString(1, "Da thanh toan");
+            statement1.setString(2, booking.getId());
+            statement1.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -234,6 +251,8 @@ public class PaymentDAO96 {
                 booking.setListSanThuePhatSinh(getRentalInAdvanceByBookingId(booking.getId()));
                 booking.setPaymentAmount(result.getFloat("paymentAmount"));
                 booking.setCreateTime(result.getDate("createTime"));
+                booking.setDeposit(result.getFloat("deposit"));
+                booking.setStatus(result.getString("status"));
                 return booking;
             }
         } catch (SQLException ex) {
@@ -241,4 +260,5 @@ public class PaymentDAO96 {
         }
         return null;
     }
+
 }

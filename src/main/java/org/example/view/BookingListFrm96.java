@@ -70,9 +70,10 @@ public class BookingListFrm96 extends JFrame {
         model.addColumn("Create Time");
         model.addColumn("Deposit");
         model.addColumn("Price");
+        model.addColumn("Status");
 
         for (PhieuThueSan96 booking : bookings) {
-            model.addRow(new Object[]{booking.getId(), booking.getCreateTime(), booking.getDeposit(), booking.getPaymentAmount() });
+            model.addRow(new Object[]{booking.getId(), booking.getCreateTime(), booking.getDeposit(), booking.getPaymentAmount() , booking.getStatus()});
         }
         tblPhieuThueSan96.setModel(model);
     }

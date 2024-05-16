@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class InvoiceFrm96 extends JFrame {
     private JTextField txtMaPhieuThue;
@@ -136,6 +137,8 @@ public class InvoiceFrm96 extends JFrame {
         modelMatHangDaSuDung96.addColumn("Tên Mặt Hàng");
         modelMatHangDaSuDung96.addColumn("Số Lượng");
         modelMatHangDaSuDung96.addColumn("Giá");
+        String id = phieuThueSan96.getId();
+        List<MatHangDaSuDung96> listMatHang = paymentDAO.getUsedProductsByBookingId(id);
         for (MatHangDaSuDung96 matHangDaSuDung : phieuThueSan96.getListMatHang()) {
             modelMatHangDaSuDung96.addRow(new Object[]{matHangDaSuDung.getId(), matHangDaSuDung.getMatHang().getName(), matHangDaSuDung.getQuantity(), matHangDaSuDung.getTotal()});
         }
