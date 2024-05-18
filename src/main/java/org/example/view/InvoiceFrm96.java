@@ -1,7 +1,10 @@
 package org.example.view;
 
 import org.example.DAO.PaymentDAO96;
-import org.example.model.*;
+import org.example.model.MatHangDaSuDung96;
+import org.example.model.PhieuThueSan96;
+import org.example.model.SanThue96;
+import org.example.model.SanThuePhatSinh96;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

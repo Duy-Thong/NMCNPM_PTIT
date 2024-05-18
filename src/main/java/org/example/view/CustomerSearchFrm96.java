@@ -1,6 +1,7 @@
 package org.example.view;// view.CustomerSearchFrm96.java
+
 import org.example.DAO.PaymentDAO96;
-import org.example.model.*;
+import org.example.model.KhachHang96;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
