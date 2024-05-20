@@ -69,6 +69,7 @@ public class PaymentDAO96 {
                 booking.setCreateTime(result.getDate("createTime"));
                 booking.setPaymentAmount(result.getFloat("paymentAmount"));
                 booking.setDeposit(result.getFloat("deposit"));
+                booking.setStatus(result.getString("status"));
                 bookings.add(booking);
             }
         } catch (SQLException ex) {

@@ -22,7 +22,6 @@ public class PhieuThueSan96 {
         this.listSanThuePhatSinh = new ArrayList<>();
         this.listMatHang = new ArrayList<>();
         this.createTime = new Date();
-        this.status = "Chưa thanh toán";
     }
 
     public PhieuThueSan96(KhachHang96 khachHang, List<SanThue96> listSanThue) {
